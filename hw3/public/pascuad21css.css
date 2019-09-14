@@ -1,0 +1,70 @@
+/*author Dylan Pascua Date:9/8/19 Version: HW2 */
+	form{
+            background-color: lightgrey;
+	    width: 630px;
+            border: 15px solid darkred;
+            border-radius: 25px;
+            padding: 20px;
+            margin: 10px;
+        }
+        img{
+            border: 10px solid crimson;
+            border-radius: 25px;
+            position: relative;
+            left: 130px;
+            width: 400px;
+            height: 300px;
+        }
+        h1{
+            background-color: crimson;
+            width: 375px;
+            position: relative;
+            left:150px;
+            font-family: italic, cursive;
+            
+        }
+        h3{
+            font-family: impact, charcoal, sans-serif
+        }
+        #totalOrders{
+	    background-color: silver;
+            width: 400px;
+            border: 15px solid red;
+            border-radius: 25px;
+            padding: 30px;
+            margin: 20px;
+       }
+	#month{
+	    display:inline; 
+	    color:black;
+	    font-size: 16px;
+	    background-color: white;
+	    padding:10px;
+	    border:none;	
+	}
+	#dropdown{
+	    position:relative;
+	    display:inline-block;
+	}	
+	#dropContent{
+ 	    display: none;
+	    height:100px;
+	    font-family: arial;
+	    overflow-y:scroll;
+	    position: absolute;
+	    background-color: white;
+	    min-width: 80px;
+	    z-index: 1;
+	}
+	#dropContent a{
+	    color: black;
+	    display: block;
+	    text-decoration:none;
+	}
+
+	#dropdown:hover #dropContent {display: block;}	
+	#dropdown:hover #month{background-color: lightgrey;}
+	#dropContent a:hover {background-color: darkgrey;}
+		
+
+	

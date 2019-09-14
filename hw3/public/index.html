@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<!-- Author: Dylan Pascua Date:9/7/19 Version: HW2 version --> 
+	<head>
+		<link href="pascuad21css.css" rel="stylesheet" type="text/css">
+		<h1>Cheesecake Order Form</h1>
+		
+		<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+		<!--Order button and dropdown menu script code -->
+		<script src="javascripts/orderButton_monthDropdown.js"></script>
+		<!-- Thank you screen code -->
+		<script src="/javascripts/thankYouScreen.js"></script>
+	</head>
+
+	<body>
+		<!-- this is the picture of the cheese cake -->
+		<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-						_Cheesecake_with_strawberry_sauce.jpg"alt="Cheese Cake" width="200" height="200">
+
+		<!-- this is the form that customers fill out that describes what
+			type of cheesecake they will purchase -->
+		<form>
+			<table style="width:25%">
+				<tr>
+					<td>Quantity</td> 
+					<td>Topping</td>
+				</tr><br>
+				<tr>
+					<!-- the amount they wish to buy. max is 4 -->
+					<td><select id="select">
+						<option value ="1">1</option>
+						<option value ="2">2</option>
+						<option value ="3">3</option>
+						<option value ="4">4</option>
+					</select></td>
+			
+					<!-- the type of toppings they want, they can only 
+						pick 1 type -->
+					<td>	
+						<input type="radio" value="Plain" id="plain" name="topping" checked>
+							<label for="plain">Plain</label><br>
+						<input type="radio" value="Cherry" id="cherry" name="topping">	
+							<label for="cherry">Cherry</label><br>
+						<input type="radio" value="Chocolate" id="chocolate" name="topping">
+							<label for="chocolate">Chocolate</label><br>
+					</td>
+				</tr>
+			</table>
+			
+		<!-- any notes they wish to send along with the order -->
+		<p id="noteHeader">Notes:</p>
+		<textarea id="notes" rows="4" cols="50"></textarea><br>	
+
+		<!-- when finished, the customer will press the order button -->
+		<button id="orderButton" type="button">Order</button>
+
+		<!-- this is to be used after the customer places the order and 
+			is then shown -->
+		<p id="thankYou"></p>
+        	<p id="orderOverview"></p>			
+		
+		</form>	
+
+		<!-- a display of the previous purchases based on month -->
+		<div id="totalOrders">
+			<h3>Orders for: 
+			     <!-- This is the drop dropdown menu for the months -->
+			     <div id="dropdown"> 
+				<button id="month">Jan</button>
+					<div id="dropContent">
+						<a value="Jan">Jan</a><br>
+						<a value="Feb">Feb</a><br>
+						<a value="Mar">Mar</a><br>
+						<a value="Apr">Apr</a><br>
+						<a value="May">May</a><br>
+						<a value="Jun">Jun</a><br>
+						<a value="Jul">Jul</a><br>
+						<a value="Aug">Aug</a><br>
+						<a value="Sep">Sep</a><br>
+						<a value="Oct">Oct</a><br>
+						<a value="Nov">Nov</a><br>
+						<a value="Dec">Dec</a><br>
+					</div>
+			      </div>
+			</h3>
+
+			<ul>
+				<li>11 cherry</li>
+				<li>17 chocolate</li>
+				<li>31 plain</li>
+			</ul>
+		</div>
+	</body>
+<!--
+External Citatiton:
+I didnt know how to add a scrol bar to the drop down menu
+https://stackoverflow.com/questions/585032/how-to-make-a-drop-down-menu-with-a-vertical-scroll-bar
+Accessed: 9/8/19
+-->
+<!--
+External Citatiton:
+I didnt know how to change the dropdown menu based on the selected menu item
+https://stackoverflow.com/questions/13437446/how-to-display-selected-item-in-bootstrap-button-dropdown-title
+Accessed: 9/8/19
+-->
+</html>
