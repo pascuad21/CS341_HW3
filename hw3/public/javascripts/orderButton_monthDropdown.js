@@ -14,5 +14,12 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#dropContent a").click(function(){
 		$("#month").text($(this).text());
+		//This will change the data based on what month it is
+		$.post('http://localhost:3000/orders',
+			function(data){
+				$("#cherryTotal").text(data.cherry);
+				$("#plainTotal").text(data.plain);
+				$("#chocolateTotal").text(data.chocolate);
+			});
 	});
 });
