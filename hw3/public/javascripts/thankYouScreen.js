@@ -30,8 +30,18 @@ function orderFunction(){
 
 	//prints the thank you text
 	var thankMessage = "Thank You! Your Order has been placed!";
-        var theOrder = "You Ordered: " + quantity + " " + topping +" " +
+    var theOrder = "You Ordered: " + quantity + " " + topping +" " +
 		" Cheesecakes. Your note was: " + notes;
-	document.getElementById("thankYou").innerHTML = thankMessage;
-        document.getElementById("orderOverview").innerHTML = theOrder;
+		document.getElementById("thankYou").innerHTML = thankMessage;
+		document.getElementById("orderOverview").innerHTML = theOrder;
+		
+	//sends the data to newOrder.js 
+	$.post('http://localhost:3000/neworder',
+	{
+		quantity: quantity,
+		topping: topping,
+		notes: notes,
+	},	
+	);
+
 	}

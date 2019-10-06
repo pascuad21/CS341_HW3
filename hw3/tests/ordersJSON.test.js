@@ -9,6 +9,9 @@ test('test ordersFile', () => {
 
     //makes sure there some data in the array 
     expect(testArray.data).toEqual(expect.anything());
+    expect(testArray.data[0]).toEqual(expect.anything());
+    expect(testArray.data[1]).toEqual(expect.anything());
+    expect(testArray.data[2]).toEqual(expect.anything());
 });
 /* External Citation
 I didn't know how to reference a variable from another .js fike

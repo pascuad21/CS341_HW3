@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var dbms = require('./dbms.js');
+
 var ordersArray = { 
     "data": [
          { 
@@ -23,11 +25,33 @@ router.get('/', function(req, res, next) {
 });
 
 /* takes in post requests from the main website and sends the Toppings & quantities*/
-router.post('/',function(req,res){
-    var cherryData = (ordersArray.data[0].Topping + " " + ordersArray.data[0].Quantity);
-    var plainData = (ordersArray.data[1].Topping + " " + ordersArray.data[1].Quantity);
-    var chocolateData = (ordersArray.data[2].Topping + " " + ordersArray.data[2].Quantity);
-    res.send({cherry: cherryData , plain: plainData, chocolate : chocolateData }); 
+router.post('/',function(req,res){ 
+    var month = req.body.month;
+    console.log(month); // for testing purposes 
+    dbms.dbquery("SELECT * FROM ORDERS WHERE MONTH='"+ month +"'", processMonthData);
+
+    function processMonthData(row, result){
+        if(row == false){
+            var plainCounter = 0;
+            var chocolateCounter = 0;
+            var cherryCounter = 0;
+            for( var row = 0; row < result.length; row++){
+                orderString = JSON.stringify(result[row]);
+                orderObj = JSON.parse(orderString);
+                if(orderObj.TOPPING == 'plain'){
+                    plainCounter = plainCounter + orderObj.QUANTITY;
+                }
+                else if(orderObj.TOPPING == 'chocolate'){
+                    chocolateCounter = chocolateCounter + orderObj.QUANTITY;
+                }
+                else if(orderObj.TOPPING == 'cherry'){
+                    cherryCounter = cherryCounter + orderObj.QUANTITY;
+                }
+            }
+        }
+        var details  = {plain:"Plain " + plainCounter,chocolate: "Chocolate "+chocolateCounter,cherry: "Cherry "+cherryCounter};
+        res.send(details);
+    }
 });
 
 module.exports = router;
@@ -37,4 +61,9 @@ module.exports.ordersArray = ordersArray; //used for testing
 I didn't know how to send multiple json data values through post 
 https://stackoverflow.com/questions/30964486/nodejs-express-how-to-send-multiple-json-variable-from-server-to-client-throu
 Accessed: 9/22/2019 
+*/
+
+/* External Citation 
+I didn't know how to properly get data from the database so patrick helped me
+Source: Peer-Patrick
 */
